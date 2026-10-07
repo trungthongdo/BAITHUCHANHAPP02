@@ -88,7 +88,6 @@ const SearchModal: React.FC<SearchModalProps> = ({ visible, onClose, onSelectCit
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-        {/* Header */}
         <View style={styles.header}>
           <Text style={styles.title}>Tìm kiếm địa điểm</Text>
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
@@ -96,7 +95,6 @@ const SearchModal: React.FC<SearchModalProps> = ({ visible, onClose, onSelectCit
           </TouchableOpacity>
         </View>
 
-        {/* Search Input */}
         <View style={styles.searchContainer}>
           <Text style={styles.searchPrefix}>🔍</Text>
           <TextInput
@@ -115,7 +113,6 @@ const SearchModal: React.FC<SearchModalProps> = ({ visible, onClose, onSelectCit
           )}
         </View>
 
-        {/* Results or Popular Cities */}
         {searching && (
           <View style={styles.loadingContainer}>
             <ActivityIndicator color={COLORS.primary} />

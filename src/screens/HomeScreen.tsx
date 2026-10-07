@@ -84,7 +84,6 @@ const HomeScreen: React.FC = () => {
     <View style={[styles.container, { backgroundColor: gradient[0] }]}>
       <StatusBar barStyle="light-content" />
 
-      {/* Atmospheric Linear Gradient Background */}
       <LinearGradient
         colors={gradient}
         start={{ x: 0.1, y: 0 }}
@@ -97,7 +96,6 @@ const HomeScreen: React.FC = () => {
         style={[styles.ambientGlowPrimary, { backgroundColor: glowColor }]}
       />
 
-      {/* Starry accent dots for night time */}
       {!weatherData.current.is_day && (
         <View style={StyleSheet.absoluteFill} pointerEvents="none">
           <View style={[styles.starDot, styles.starPositionOne]} />
@@ -133,14 +131,12 @@ const HomeScreen: React.FC = () => {
           </View>
         ) : null}
 
-        {/* Current Weather Header */}
         <CurrentWeatherHeader
           data={weatherData}
           onRefresh={refreshWeather}
           onSearch={() => setSearchVisible(true)}
         />
 
-        {/* Hourly Forecast */}
         {hourlyData.length > 0 ? (
           <HourlyForecastSection hours={hourlyData} />
         ) : (
@@ -149,17 +145,14 @@ const HomeScreen: React.FC = () => {
           </View>
         )}
 
-        {/* Daily Forecast */}
         <DailyForecastSection
           forecastDays={weatherData.forecast.forecastday}
           referenceDate={weatherData.location.localtime}
           onDayPress={handleDayPress}
         />
 
-        {/* Weather Metrics */}
         <WeatherMetricsGrid current={weatherData.current} />
 
-        {/* Sunrise/Sunset */}
         {todayForecast ? (
           <View style={styles.astroCard}>
             <View style={styles.astroItem}>
@@ -183,7 +176,6 @@ const HomeScreen: React.FC = () => {
         <View style={styles.footer} />
       </ScrollView>
 
-      {/* Search Modal */}
       <SearchModal
         visible={searchVisible}
         onClose={() => setSearchVisible(false)}

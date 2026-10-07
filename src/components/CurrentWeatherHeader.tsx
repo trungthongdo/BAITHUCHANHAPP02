@@ -54,7 +54,6 @@ const CurrentWeatherHeader: React.FC<CurrentWeatherHeaderProps> = ({
       }),
     ]).start();
 
-    // Pulse animation for the emoji
     const pulse = Animated.loop(
       Animated.sequence([
         Animated.timing(pulseAnim, {
@@ -77,7 +76,6 @@ const CurrentWeatherHeader: React.FC<CurrentWeatherHeaderProps> = ({
   return (
     <Animated.View
       style={[styles.container, { opacity: fadeAnim }]}>
-      {/* Top bar */}
       <View style={styles.topBar}>
         <TouchableOpacity onPress={onSearch} style={styles.searchButton}>
           <Text style={styles.searchIcon}>🔍</Text>
@@ -93,27 +91,22 @@ const CurrentWeatherHeader: React.FC<CurrentWeatherHeaderProps> = ({
         </TouchableOpacity>
       </View>
 
-      {/* Date */}
       <Animated.Text
         style={[styles.dateText, { transform: [{ translateY: slideAnim }] }]}>
         {formatFullDate(location.localtime)}
       </Animated.Text>
 
-      {/* Weather Emoji */}
       <Animated.Text
         style={[styles.weatherEmoji, { transform: [{ scale: pulseAnim }] }]}>
         {getWeatherEmoji(current.condition.code, current.is_day)}
       </Animated.Text>
 
-      {/* Temperature */}
       <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
         <Text style={styles.temperature}>{formatTemp(current.temp_c)}</Text>
       </Animated.View>
 
-      {/* Condition */}
       <Text style={styles.conditionText}>{current.condition.text}</Text>
 
-      {/* High/Low/Feels Like */}
       <View style={styles.tempDetails}>
         <View style={styles.tempDetailItem}>
           <Text style={styles.tempDetailLabel}>Cao</Text>

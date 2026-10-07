@@ -1,97 +1,113 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+README hướng dẫn cài đặt và chạy chương trình
 
-# Getting Started
+1. Yêu cầu môi trường
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+- Node.js phiên bản 22.11.0 trở lên
+- npm
+- Android Studio đã cài Android SDK
+- JDK 17
+- Android Emulator hoặc điện thoại Android đã bật USB debugging
 
-## Step 1: Start Metro
+Tham khảo hướng dẫn cài đặt môi trường React Native tại:
+https://reactnative.dev/docs/set-up-your-environment
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+2. Tạo project React Native CLI
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+Tạo một thư mục để chứa project, sau đó mở thư mục đó bằng VS Code. Mở terminal trong VS Code và chạy lệnh sau để khởi tạo ứng dụng `DuBaoThoiTiet`:
 
-```sh
-# Using npm
+```bash
+npx @react-native-community/cli@latest init DuBaoThoiTiet
+```
+
+Sau khi khởi tạo xong, chuyển vào thư mục ứng dụng:
+
+```bash
+cd DuBaoThoiTiet
+```
+
+3. Cài đặt thư viện
+
+Trong thư mục `DuBaoThoiTiet`, cài đặt các thư viện của project:
+
+```bash
+npm install
+```
+
+4. Chạy chương trình trên Android
+
+Trước tiên, khởi động Metro Bundler:
+
+```bash
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+Để Metro tiếp tục chạy, mở thêm một terminal khác trong thư mục `DuBaoThoiTiet`, rồi chạy ứng dụng:
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+Lệnh này sẽ build và cài ứng dụng lên Android Emulator đang chạy hoặc thiết bị Android đã kết nối. Nếu sử dụng điện thoại thật, hãy bật USB debugging và kiểm tra thiết bị đã được nhận bằng lệnh `adb devices`.
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+5. Sử dụng ứng dụng
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+- Xem thời tiết hiện tại, dự báo theo giờ và dự báo nhiều ngày.
+- Tìm kiếm thời tiết theo tên thành phố.
+- Chạm vào một ngày trong phần dự báo để xem thông tin chi tiết.
+- Kéo màn hình xuống để cập nhật dữ liệu thời tiết.
 
-```sh
-bundle install
+Ứng dụng lấy dữ liệu thời tiết và tìm kiếm địa điểm từ Open-Meteo. API này không yêu cầu API key.
+
+6. Kiểm tra chương trình
+
+Chạy lệnh sau để chạy các bài kiểm tra của project:
+
+```bash
+npm test
 ```
 
-Then, and every time you update your native dependencies, run:
+Có thể kiểm tra quy tắc mã nguồn bằng lệnh:
 
-```sh
-bundle exec pod install
+```bash
+npm run lint
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+7. Một số lệnh hữu ích
 
-```sh
-# Using npm
-npm run ios
+- Khởi động lại Metro và xóa cache:
 
-# OR using Yarn
-yarn ios
+```bash
+npx react-native start --reset-cache
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+- Chạy trực tiếp ứng dụng Android:
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```bash
+npx react-native run-android
+```
 
-## Step 3: Modify your app
+8. Cấu trúc chính của mã nguồn
 
-Now that you have successfully run the app, let's make changes!
+```text
+DuBaoThoiTiet/
+├── android/                 Cấu hình và mã nguồn Android
+├── ios/                     Cấu hình iOS
+├── src/
+│   ├── components/          Các thành phần giao diện
+│   ├── constants/           Cấu hình API và giao diện
+│   ├── hooks/                Hook xử lý dữ liệu thời tiết
+│   ├── navigation/          Điều hướng giữa các màn hình
+│   ├── screens/             Màn hình chính và chi tiết dự báo
+│   ├── services/            Gọi API thời tiết
+│   ├── types/               Kiểu dữ liệu TypeScript
+│   └── utils/               Hàm tiện ích
+├── App.tsx
+└── package.json
+```
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+9. Xử lý sự cố
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- Nếu không thấy thiết bị Android, chạy `adb devices`; kiểm tra cáp USB, quyền gỡ lỗi USB và trạng thái emulator.
+- Nếu Metro gặp lỗi cache, dừng Metro bằng `Ctrl + C`, sau đó chạy lại `npx react-native start --reset-cache`.
+- Nếu build Android thất bại, kiểm tra phiên bản JDK, Android SDK và biến môi trường `ANDROID_HOME`, rồi thử chạy lại `npm run android`.
+- Nếu không tải được dữ liệu thời tiết, kiểm tra kết nối Internet và thử làm mới dữ liệu trong ứng dụng.

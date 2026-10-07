@@ -1,6 +1,5 @@
 import { WeatherData, HourlyForecast } from '../types/weather';
 
-// Get weather condition emoji and icon name based on condition code
 export const getWeatherEmoji = (code: number, isDay: number = 1): string => {
   if (code === 1000) return isDay ? '☀️' : '🌙';
   if (code === 1003) return '⛅';
@@ -31,42 +30,32 @@ export const getWeatherIconName = (code: number, isDay: number = 1): string => {
 export const getWeatherGradient = (code: number, isDay: number = 1): string[] => {
   if (!isDay) {
     if (code >= 1273 && code <= 1282) {
-      // Sấm sét ban đêm - tím huyền bí
       return ['#070514', '#120b2e', '#1e114a', '#2b1566', '#170c38', '#080517'];
     }
     if (code >= 1063 && code <= 1264) {
-      // Mưa ban đêm - xanh biển sâu
       return ['#050b17', '#09152b', '#0f2245', '#163161', '#0d1f40', '#060d1c'];
     }
-    // Đêm trời quang - bầu trời đêm ánh sao sâu thẳm
     return ['#050918', '#0a122e', '#101d46', '#16285f', '#0f1a3e', '#070b1e'];
   }
 
-  // Ban ngày nắng - xanh dương rực rỡ & bầu trời trong xanh
   if (code === 1000) {
     return ['#0284c7', '#0ea5e9', '#38bdf8', '#0ea5e9', '#0284c7', '#0369a1'];
   }
-  // Ban ngày có mây / ít mây - chuyển màu xanh dương sang xanh cobalt
   if (code === 1003) {
     return ['#0284c7', '#2563eb', '#3b82f6', '#1d4ed8', '#1e3a8a', '#0f172a'];
   }
-  // Nhiều mây / u ám - xám đá phiến thanh lịch
   if (code === 1006 || code === 1009) {
     return ['#1e293b', '#334155', '#475569', '#3b495d', '#283446', '#1a2230'];
   }
-  // Sương mù - xám lạnh mờ sương
   if (code === 1030 || code === 1135 || code === 1147) {
     return ['#222a36', '#323e4e', '#415064', '#364355', '#26303d', '#1a202a'];
   }
-  // Mưa / mưa rào - xanh biển xám sâu
   if (code >= 1063 && code <= 1201) {
     return ['#0d2238', '#153556', '#1d4a77', '#255e96', '#183f66', '#0f263e'];
   }
-  // Tuyết - xanh băng giá
   if (code >= 1204 && code <= 1237) {
     return ['#283d52', '#39536d', '#4d6d8d', '#5d81a4', '#3d5874', '#233649'];
   }
-  // Bão có sấm sét
   if (code >= 1273 && code <= 1282) {
     return ['#0d0b24', '#1a133f', '#291d5e', '#3c2982', '#211649', '#0e0b25'];
   }
@@ -75,11 +64,11 @@ export const getWeatherGradient = (code: number, isDay: number = 1): string[] =>
 };
 
 export const getWeatherGlowColor = (code: number, isDay: number = 1): string => {
-  if (!isDay) return 'rgba(99, 102, 241, 0.35)'; // Tím indigo lấp lánh ban đêm
-  if (code === 1000) return 'rgba(251, 191, 36, 0.45)'; // Vàng cam ấm áp ban ngày
-  if (code === 1003) return 'rgba(56, 189, 248, 0.4)'; // Xanh ngọc mây
-  if (code >= 1063 && code <= 1201) return 'rgba(59, 130, 246, 0.35)'; // Xanh dương sương mưa
-  if (code >= 1273 && code <= 1282) return 'rgba(168, 85, 247, 0.45)'; // Tím sấm chớp
+  if (!isDay) return 'rgba(99, 102, 241, 0.35)';
+  if (code === 1000) return 'rgba(251, 191, 36, 0.45)';
+  if (code === 1003) return 'rgba(56, 189, 248, 0.4)';
+  if (code >= 1063 && code <= 1201) return 'rgba(59, 130, 246, 0.35)';
+  if (code >= 1273 && code <= 1282) return 'rgba(168, 85, 247, 0.45)';
   return 'rgba(148, 163, 184, 0.25)';
 };
 

@@ -49,7 +49,6 @@ const DayDetailScreen: React.FC = () => {
     <View style={[styles.container, { backgroundColor: gradient[0] }]}>
       <StatusBar barStyle="light-content" />
 
-      {/* Atmospheric Linear Gradient Background */}
       <LinearGradient
         colors={gradient}
         start={{ x: 0.1, y: 0 }}
@@ -62,7 +61,6 @@ const DayDetailScreen: React.FC = () => {
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}>
 
-        {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity
             onPress={() => navigation.goBack()}
@@ -73,7 +71,6 @@ const DayDetailScreen: React.FC = () => {
           <View style={styles.headerSpacer} />
         </View>
 
-        {/* Main Info */}
         <View style={styles.mainCard}>
           <Text style={styles.dateText}>{formatFullDate(day.date)}</Text>
           <Text style={styles.weatherEmoji}>
@@ -105,7 +102,6 @@ const DayDetailScreen: React.FC = () => {
           </View>
         </View>
 
-        {/* Details Grid */}
         <View style={styles.sectionTitle}>
           <Text style={styles.sectionTitleText}>📊 Thông tin chi tiết</Text>
         </View>
@@ -139,7 +135,6 @@ const DayDetailScreen: React.FC = () => {
           />
         </View>
 
-        {/* Astronomy */}
         <View style={styles.sectionTitle}>
           <Text style={styles.sectionTitleText}>🌟 Thiên văn học</Text>
         </View>
@@ -178,7 +173,6 @@ const DayDetailScreen: React.FC = () => {
           </View>
         </View>
 
-        {/* Hourly breakdown */}
         <View style={styles.sectionTitle}>
           <Text style={styles.sectionTitleText}>🕐 Dự báo theo giờ</Text>
         </View>

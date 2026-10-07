@@ -6,6 +6,14 @@ const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
  *
  * @type {import('@react-native/metro-config').MetroConfig}
  */
-const config = {};
+const config = {
+  server: {
+    rewriteRequestUrl: (url) => {
+      const requestUrl = new URL(url, 'http://localhost');
+      requestUrl.searchParams.set('lazy', 'false');
+      return `${requestUrl.pathname}${requestUrl.search}${requestUrl.hash}`;
+    },
+  },
+};
 
 module.exports = mergeConfig(getDefaultConfig(__dirname), config);
